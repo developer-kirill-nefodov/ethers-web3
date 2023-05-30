@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  site:
+    build:
+      context: ../
+      dockerfile: ./docker/local/site.Dockerfile
+    volumes:
+      - ../app/frontend/:/app
+    restart: unless-stopped
+    networks:
+      - web-3.0
+
+#  api:
+#    build:
+#      context: ../
+#      dockerfile: ./docker/local/api.Dockerfile
+#    volumes:
+#      - ../app/backend/:/home/nodejs/api
+#    restart: unless-stopped
+#    networks:
+#      - web3
+
+#  db:
+#    image: postgres
+#    restart: unless-stopped
+#    environment:
+#      POSTGRES_USER: ${POSTGRES_USER}
+#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#      PGDATA: ./postgres
+#    volumes:
+#      - browser_db_data:/data/postgres
+#    networks:
+#      - web3
+#    logging:
+#      driver: "none"
+
+  nginx:
+    restart: unless-stopped
+    image: nginx:1.21.6
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "3000:3000"
+    networks:
+      - web-3.0
+    logging:
+      driver: "none"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  browser_db_data:
+  pgadmin:
+
+
+networks:
+  web-3.0:
+    external: false
