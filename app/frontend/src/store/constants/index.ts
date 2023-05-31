@@ -1,0 +1,1 @@
+export const ACCESS_ROLE = 'ACCESS_ROLE_ACTION';

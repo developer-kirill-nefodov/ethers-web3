@@ -1,5 +1,5 @@
 import axios from "axios";
-import {deleteAccessToken, getAccessToken, refreshAccessToken, setAccessToken} from "./utils/api/refresh-token";
+import {deleteAccessToken, getAccessToken, refreshAccessToken, setAccessToken} from "./utils/api";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL
@@ -9,7 +9,7 @@ api.interceptors.response.use((response) => {
   return response;
 }, async (error) => {
   const originalRequest = error.config;
-  if (error.response.status === 401 && !originalRequest._retry) {
+  if (error.response.status === 403 && !originalRequest._retry) {
     originalRequest._retry = true;
 
     const data = await refreshAccessToken();

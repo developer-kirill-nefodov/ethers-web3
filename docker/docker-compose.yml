@@ -4,36 +4,63 @@ services:
   site:
     build:
       context: ../
-      dockerfile: ./docker/local/site.Dockerfile
+      dockerfile: ./docker/${ENVIRONMENT}/site.Dockerfile
     volumes:
       - ../app/frontend/:/app
     restart: unless-stopped
     networks:
-      - web-3.0
+      - ethers-web3
 
-#  api:
-#    build:
-#      context: ../
-#      dockerfile: ./docker/local/api.Dockerfile
-#    volumes:
-#      - ../app/backend/:/home/nodejs/api
-#    restart: unless-stopped
-#    networks:
-#      - web3
+  api:
+    build:
+      context: ../
+      dockerfile: ./docker/${ENVIRONMENT}/api.Dockerfile
+    volumes:
+      - ../app/backend/:/home/nodejs/api
+    restart: unless-stopped
+    networks:
+      - ethers-web3
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: "exit 0"
 
-#  db:
-#    image: postgres
-#    restart: unless-stopped
-#    environment:
-#      POSTGRES_USER: ${POSTGRES_USER}
-#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-#      PGDATA: ./postgres
-#    volumes:
-#      - browser_db_data:/data/postgres
-#    networks:
-#      - web3
-#    logging:
-#      driver: "none"
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ./postgres
+    volumes:
+      - ethers-web3-data:/data/postgres
+    networks:
+      - ethers-web3
+    logging:
+      driver: "none"
+    healthcheck:
+      test: "exit 0"
+
+  redis:
+    image: bitnami/redis:6.2
+    restart: unless-stopped
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    networks:
+      - ethers-web3
+    logging:
+      driver: "none"
+
+  rediscommander:
+    image: rediscommander/redis-commander
+    restart: unless-stopped
+    networks:
+      - ethers-web3
+    ports:
+      - "8081:8081"
+    logging:
+      driver: "none"
 
   nginx:
     restart: unless-stopped
@@ -43,18 +70,19 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - web-3.0
+      - ethers-web3
     logging:
       driver: "none"
       options:
         max-size: "10m"
         max-file: "3"
+    depends_on:
+      api:
+        condition: service_healthy
 
 volumes:
-  browser_db_data:
-  pgadmin:
-
+  ethers-web3-data:
 
 networks:
-  web-3.0:
+  ethers-web3:
     external: false

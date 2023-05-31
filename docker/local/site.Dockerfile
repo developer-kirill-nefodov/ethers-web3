@@ -14,7 +14,7 @@ RUN \
 COPY ./app/frontend/public ./public
 COPY ./app/frontend/src ./src
 COPY ./app/frontend/tsconfig.json .
-COPY ./app/frontend/custom.d.ts .
+COPY ./app/frontend/globals.d.ts .
 COPY ./app/frontend/.env .
 
 EXPOSE 3000
