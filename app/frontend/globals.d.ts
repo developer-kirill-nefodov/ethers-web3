@@ -1,20 +1,27 @@
 import {AxiosInstance} from "axios";
 import {BrowserProvider} from "ethers";
-import {FunctionComponent, SVGAttributes} from "react";
 
 declare global {
   interface Window {
     axios: AxiosInstance;
     ethereum?: BrowserProvider;
   }
+
+  declare module "*.svg" {
+    import {FunctionComponent, SVGProps} from "react";
+
+    export const ReactComponent: FunctionComponent<SVGProps<
+      SVGSVGElement
+    > & { style?: Object, className?: string }>;
+
+    const src: string;
+    export default src;
+  }
+
+  declare module "*.png" {
+    const content: any;
+    export default content;
+  }
 }
 
-declare module "*.svg" {
-  const content: FunctionComponent<SVGAttributes<SVGElement>>;
-  export default content;
-}
 
-declare module "*.png" {
-  const content: any;
-  export default content;
-}

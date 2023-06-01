@@ -1,11 +1,21 @@
 import React from 'react';
 
-const Layout = () => {
+import LayoutHeader from "./LayoutHeader";
+import {WrapperLayout} from "./styles";
+import LayoutFooter from "./LayoutFooter";
+
+interface ILayout {
+  children: any
+}
+
+const Layout = ({children}: ILayout) => {
 
   return (
-    <div>
-
-    </div>
+    <WrapperLayout>
+      <LayoutHeader/>
+        {children}
+      <LayoutFooter/>
+    </WrapperLayout>
   );
 };
 

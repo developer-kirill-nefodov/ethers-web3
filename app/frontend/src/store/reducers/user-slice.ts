@@ -30,7 +30,7 @@ export const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {
-    setUserData: (state, data: PayloadAction<IUserState>) => {
+    setUserData: (state: IUserState, data: PayloadAction<IUserState>) => {
       return {
         ...state,
         ...data.payload
