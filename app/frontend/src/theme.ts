@@ -11,7 +11,7 @@ export const theme = {
     xl: 1536
   },
   colors: {
-
+    navigate: 'rgb(32 45 115)',
   },
 
 };

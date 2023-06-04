@@ -1,11 +1,13 @@
 import React from 'react';
 
+import Languages from "./Languages";
+
 import {useStoreSelector} from "../../store/hooks";
 import {useMediaQuery} from "../../utils/hooks/useMediaQuery";
 import {NavigateUrls} from "../../utils/constants/navigate-urls";
 
-import {CustomLink, Div, Img} from "../../styles";
-import {WrapperLayoutHeader} from "./styles";
+import {Div, Img} from "../../styles";
+import {NavigateLink, WrapperLayoutHeader} from "./styles";
 
 import IconNftLogo from '../../utils/icons/svg/nfter-logo.svg';
 import IconNftLogoText from '../../utils/icons/svg/nfter-logo-w-text.svg';
@@ -16,23 +18,27 @@ const LayoutHeader = () => {
 
   return (
     <WrapperLayoutHeader>
-      <div>
+      <NavigateLink to={NavigateUrls.home}>
         <Img
           alt='IconNftLogo'
           loading="lazy"
           src={isMobile ? IconNftLogo : IconNftLogoText}
         />
-      </div>
-      {userData.role.name === 'VISITOR' && (
-        <Div display='flex' margin='0 20px 0 0'>
-          <CustomLink margin='0 20px 0 0' to={NavigateUrls.auth.login}>
-            Sign in
-          </CustomLink>
-          <CustomLink to={NavigateUrls.auth.create}>
-            Sign up
-          </CustomLink>
-        </Div>
-      )}
+      </NavigateLink>
+      <Div display='flex' margin='0 20px 0 0'>
+        <Languages isMobile={isMobile}/>
+        {userData.role.name === 'VISITOR' && (
+          <Div display='flex' alignItems='center' margin='0 0 0 40px'>
+            <NavigateLink margin='0 20px 0 0' to={NavigateUrls.auth.login}>
+              Sign in
+            </NavigateLink>
+            <NavigateLink to={NavigateUrls.auth.create}>
+              Sign up
+            </NavigateLink>
+          </Div>
+
+        )}
+      </Div>
     </WrapperLayoutHeader>
   );
 };

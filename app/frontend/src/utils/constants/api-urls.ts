@@ -1,4 +1,7 @@
 export const ApiUrls = {
+  countries: {
+    getLang: '/countries/lang',
+  },
   translations: {
     getTranslation: '/translation/i18n',
   },

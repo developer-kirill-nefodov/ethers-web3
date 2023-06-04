@@ -2,6 +2,7 @@ import {Router} from "express";
 
 import AuthRouters from "./auth.router";
 import TranslationRouter from "./translation.router";
+import CountryRouter from "./country.router";
 
 export interface IAnyRouter {
   prefix: string;
@@ -16,7 +17,7 @@ export interface IAnyRouter {
 
 export const routers = () => {
   const router = Router();
-  const routers = [AuthRouters, TranslationRouter];
+  const routers = [AuthRouters, TranslationRouter, CountryRouter];
 
   routers.map(({prefix, routeData}) => {
     routeData.map(({method, path, authorization = [], middleware = [], handler = []}) => {
