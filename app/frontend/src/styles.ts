@@ -6,9 +6,9 @@ export const AppGlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-  
+
   body {
-    font-family: 'Labrada', serif;
+    font-family: 'Nunito', sans-serif;
   }
 `;
 
@@ -57,5 +57,29 @@ export const CustomLink = styled(Link)<IElementLink>`
   ${(({color}) => color && `color: ${color};`)};
   ${(({margin}) => margin && `margin: ${margin};`)};
   ${(({disabled}) => disabled && `opacity: .5; pointer-events: none;`)};
+  text-align: center;
   text-decoration: none;
+`;
+
+export const Btn = styled.button`
+  font-size: .75rem;
+  cursor: pointer;
+  letter-spacing: .1em;
+  padding: .5rem 1rem;
+  border-color: transparent;
+  border-radius: 0.375rem;
+`;
+
+export const Input = styled.input`
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  font-size: 1rem;
+  border: 1px ${({theme}) => theme.colors.border} solid;
+  padding: .75rem;
+  border-radius: .5rem;
+
+  &:focus-visible {
+    outline-color: #6366f1;
+  }
 `;

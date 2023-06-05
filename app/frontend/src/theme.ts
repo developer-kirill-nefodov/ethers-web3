@@ -11,7 +11,9 @@ export const theme = {
     xl: 1536
   },
   colors: {
-    navigate: 'rgb(32 45 115)',
+    border: "#d1d5db",
+    label: "#374151",
+    error: '#bd0202',
+    navigate: '#282b3b'
   },
-
 };

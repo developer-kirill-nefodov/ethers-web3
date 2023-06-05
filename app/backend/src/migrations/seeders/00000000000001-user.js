@@ -4,7 +4,6 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('users', [
       {
-        nickname: 'Admin',
         email: 'admin@gmail.com',
         role: JSON.stringify({
           name: 'ADMIN',
@@ -15,7 +14,6 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        nickname: 'User',
         email: 'user@gmail.com',
         role: JSON.stringify({
           name: 'USER',

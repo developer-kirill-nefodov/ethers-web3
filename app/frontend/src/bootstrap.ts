@@ -1,5 +1,14 @@
 import axios from "axios";
-import {deleteAccessToken, getAccessToken, refreshAccessToken, setAccessToken} from "./utils/api";
+import {
+  getAccessToken,
+  setAccessToken,
+  refreshAccessToken
+} from "./utils/api";
+
+import {store} from "./store";
+import {accessRoleAction} from "./store/saga/actions/auth.actions";
+
+import "./utils/translations/i18n";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL
@@ -14,14 +23,13 @@ api.interceptors.response.use((response) => {
 
     const data = await refreshAccessToken();
 
-    if(data?.accessToken) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.accessToken}`;
-      setAccessToken(data.accessToken);
+    if(data?.token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      setAccessToken(data.token);
+      store.dispatch(accessRoleAction());
 
       return api(originalRequest);
     }
-
-    deleteAccessToken()
   }
   return Promise.reject(error);
 });

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactFlagsSelect from "react-flags-select";
+import {useTranslation} from "react-i18next";
 
 import {ApiUrls} from "../../../utils/constants/api-urls";
 import IconInternet from '../../../utils/icons/svg/internet.svg';
@@ -8,7 +9,8 @@ import {Img} from "../../../styles";
 import './style.css';
 
 const Languages = ({isMobile}: { isMobile: boolean; }) => {
-  const [lang, setLang] = useState('');
+  const {t, i18n} = useTranslation();
+  const [lang, setLang] = useState(i18n.language);
   const [countries, setCountries] = useState(['']);
   const [customLabels, setCustomLabels] = useState({});
 
@@ -23,7 +25,8 @@ const Languages = ({isMobile}: { isMobile: boolean; }) => {
     setCustomLabels(labels);
   }
 
-  const handlerSelect = (value: string) => {
+  const handlerSelect = async (value: string) => {
+    await i18n.changeLanguage(value);
     setLang(value);
   }
 
@@ -43,12 +46,12 @@ const Languages = ({isMobile}: { isMobile: boolean; }) => {
       className='languages'
       placeholder={isMobile ? (
         <Img
-          width='20px'
-          height='20px'
-          src={IconInternet}
+          width='24px'
+          height='24px'
           alt='IconInternet'
+          src={IconInternet}
         />
-      ) :'Select Language'}
+      ) : t('Select Language')}
     />
   );
 };

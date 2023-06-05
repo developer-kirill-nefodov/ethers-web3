@@ -3,7 +3,8 @@ import {ApiUrls} from "../constants/api-urls";
 
 interface IRefreshAccessTokenRes extends AxiosResponse {
   data: {
-    accessToken: string
+    token: string;
+    message: string;
   }
 }
 

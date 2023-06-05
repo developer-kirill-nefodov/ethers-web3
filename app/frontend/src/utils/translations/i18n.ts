@@ -8,10 +8,10 @@ const backendOptions = {
   loadPath: '{{lng}}|{{ns}}',
   request: (options: any, url: string, payload: any, callback: any) => {
     try {
-      const [lng]: any[] = url.split('|');
-      getTranslations(lng).then(response => {
+      const [lang]: string[] = url.split('|');
+      getTranslations(lang).then(response => {
         callback(null, {
-          data: response,
+          data: response?.data || {},
           status: 200,
         });
       });
@@ -23,8 +23,8 @@ const backendOptions = {
 
 i18n.use(Backend).use(initReactI18next).init(
   {
-    lng: 'en',
-    fallbackLng: 'en',
+    lng: 'US',
+    fallbackLng: 'US',
     backend: backendOptions,
     keySeparator: false,
     interpolation: {

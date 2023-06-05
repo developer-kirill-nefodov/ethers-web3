@@ -1,4 +1,7 @@
-import Home from "./Home";
+import HomePage from "./Home";
+import NotFoundPage from "./NotFound";
+import {authRouters} from "./Auth";
+import {NavigateUrls} from "../utils/constants/navigate-urls";
 
 export interface IRouters {
   path: string
@@ -9,10 +12,15 @@ export interface IRouters {
 }
 
 export const routers: IRouters[] = [
-
+  ...authRouters,
   {
-    path: '/',
-    element: <Home/>,
+    path: NavigateUrls.home,
+    element: <HomePage/>,
+    role: 'ANY'
+  },
+  {
+    path: NavigateUrls.notFound,
+    element: <NotFoundPage/>,
     role: 'ANY'
   }
 ];

@@ -1,5 +1,5 @@
-import {getTranslationI18n} from './get-translation-i18n';
+import {getByLanguageController} from './get-language.controller';
 
 export {
-  getTranslationI18n
+  getByLanguageController
 }

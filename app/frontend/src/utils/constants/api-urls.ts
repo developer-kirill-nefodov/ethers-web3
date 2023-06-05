@@ -3,7 +3,7 @@ export const ApiUrls = {
     getLang: '/countries/lang',
   },
   translations: {
-    getTranslation: '/translation/i18n',
+    getByLanguage: '/translations/getByLanguage',
   },
   auth: {
     refreshToken: '/auth/refresh-token',

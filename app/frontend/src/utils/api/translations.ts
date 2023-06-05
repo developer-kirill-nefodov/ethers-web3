@@ -1,21 +1,21 @@
 import {ApiUrls} from "../constants/api-urls";
 import {AxiosResponse} from "axios";
 
-export type ITranslationsName = 'en';
 
 interface IGetTranslationsRes extends AxiosResponse {
   data: {
-
+    language: string,
+    data: any
   }
 }
 
-export const getTranslations = async (lng: ITranslationsName) => {
+export const getTranslations = async (lang: string) => {
   try {
     const {data}: IGetTranslationsRes =
-      await window.axios.get(`${ApiUrls.translations.getTranslation}/${lng}`);
+      await window.axios.post(ApiUrls.translations.getByLanguage, {lang});
 
-    return data
+    return data;
   } catch (e) {
-
+    console.log(e)
   }
 }

@@ -9,7 +9,6 @@ export interface IAuthLoginData {
   id: ColumnReference
   email: string
   password: string
-  nickname: string
   role: IRole
 }
 
@@ -17,7 +16,6 @@ export const authLoginService = async (res: Response, user: IAuthLoginData) => {
   const tokens = await createTokens({
     id: user.id,
     email: user.email,
-    nickname: user.nickname,
     role: user.role,
   });
 

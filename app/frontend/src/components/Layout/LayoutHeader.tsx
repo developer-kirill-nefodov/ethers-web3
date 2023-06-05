@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from "react-i18next";
 
 import Languages from "./Languages";
 
@@ -13,6 +14,8 @@ import IconNftLogo from '../../utils/icons/svg/nfter-logo.svg';
 import IconNftLogoText from '../../utils/icons/svg/nfter-logo-w-text.svg';
 
 const LayoutHeader = () => {
+  const {t} = useTranslation();
+
   const isMobile = useMediaQuery({type: 'max', size: 'sm'});
   const userData = useStoreSelector(v => v.userData);
 
@@ -25,18 +28,17 @@ const LayoutHeader = () => {
           src={isMobile ? IconNftLogo : IconNftLogoText}
         />
       </NavigateLink>
-      <Div display='flex' margin='0 20px 0 0'>
+      <Div display='flex'>
         <Languages isMobile={isMobile}/>
         {userData.role.name === 'VISITOR' && (
-          <Div display='flex' alignItems='center' margin='0 0 0 40px'>
-            <NavigateLink margin='0 20px 0 0' to={NavigateUrls.auth.login}>
-              Sign in
+          <Div display='flex' alignItems='center' margin='0 0 0 10px'>
+            <NavigateLink margin={`0 ${isMobile ? '10px' : '20px'} 0 0`} to={NavigateUrls.auth.login}>
+              {t('auth.login')}
             </NavigateLink>
             <NavigateLink to={NavigateUrls.auth.create}>
-              Sign up
+              {t('auth.create')}
             </NavigateLink>
           </Div>
-
         )}
       </Div>
     </WrapperLayoutHeader>

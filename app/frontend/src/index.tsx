@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux'
 import {BrowserRouter} from "react-router-dom";
@@ -19,7 +19,9 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <App/>
+          <Suspense fallback={<div/>}>
+            <App/>
+          </Suspense>
         </ThemeProvider>
       </Provider>
     </BrowserRouter>

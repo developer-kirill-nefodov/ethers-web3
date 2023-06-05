@@ -1,15 +1,16 @@
 import type {IAnyRouter} from "../";
 
-import {getTranslationI18n} from "../../controllers/translation";
-
+import {getByLanguageController} from "../../controllers/translation";
+import {getByLanguageMiddlewares} from "../../middlewares/translation";
 
 const TranslationRouter: IAnyRouter = {
-  prefix: 'translation',
+  prefix: 'translations',
   routeData: [
     {
-      method: 'get',
-      path: 'i18n/:lng',
-      handler: [getTranslationI18n]
+      method: 'post',
+      path: 'getByLanguage',
+      middleware: [getByLanguageMiddlewares],
+      handler: [getByLanguageController]
     }
   ]
 }

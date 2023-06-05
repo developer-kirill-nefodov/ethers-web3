@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
 import AuthElement from "../components/Auth/AuthElement";
 
-import {useStoreSelector} from "../store/hooks";
+import {useStoreDispatch, useStoreSelector} from "../store/hooks";
 import {routers} from "./routers";
+import {accessRoleAction} from "../store/saga/actions/auth.actions";
 
 const AppPages = () => {
+  const dispatch = useStoreDispatch();
+
+  useEffect(() => {
+    dispatch(accessRoleAction());
+  }, []);
+
   const userData = useStoreSelector(v => v.userData);
+  const {loadingUser} = useStoreSelector(v => v.loadingData);
 
   return (
     <Routes>
@@ -17,8 +25,9 @@ const AppPages = () => {
           path={e.path}
           element={
             <AuthElement
-              userData={userData}
               item={e}
+              userData={userData}
+              loadingUser={loadingUser}
             />
           }
         />

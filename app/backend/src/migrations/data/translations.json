@@ -1,0 +1,38 @@
+{
+  "US": {
+    "auth.login": "Sign In",
+    "auth.create": "Sing Up",
+    "auth.label.email": "Email",
+    "auth.label.password": "Password",
+    "auth.placeholder.email": "Your email please...",
+    "auth.placeholder.password": "Your password please...",
+    "auth.forgotPassword": "Forgot your password?"
+  },
+  "DE": {
+    "auth.login": "Anmelden",
+    "auth.create": "Anmeldung",
+    "auth.label.email": "Email",
+    "auth.label.password": "Passwort",
+    "auth.placeholder.email": "Deine email...",
+    "auth.placeholder.password": "Ihr passwort...",
+    "auth.forgotPassword": "Haben Sie Ihr Passwort vergessen?"
+  },
+  "CN": {
+    "auth.login": "登入",
+    "auth.create": "报名",
+    "auth.label.email": "电子邮件",
+    "auth.label.password": "密码",
+    "auth.placeholder.email": "你的邮件...",
+    "auth.placeholder.password": "你的密码...",
+    "auth.forgotPassword": "忘记密码了吗？"
+  },
+  "UA": {
+    "auth.login": "Увійти",
+    "auth.create": "Зареєструватися",
+    "auth.label.email": "Електронна пошта",
+    "auth.label.password": "Пароль",
+    "auth.placeholder.email": "Ваша електронна адреса...",
+    "auth.placeholder.password": "Ваш пароль...",
+    "auth.forgotPassword": "Забули свій пароль?"
+  }
+}

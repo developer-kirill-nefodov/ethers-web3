@@ -9,7 +9,8 @@ module.exports = {
       },
       name: {
         type: Sequelize.ENUM('ADMIN', 'USER', 'MODERATOR', 'CUSTOM_ROLE'),
-        allowNull: false
+        allowNull: false,
+        primaryKey: true,
       },
       permissions: {
         type: Sequelize.JSON,

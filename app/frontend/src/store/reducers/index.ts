@@ -1,7 +1,9 @@
 import userReducer from './user-slice';
+import loadingReducer from './loading-slice';
 
 const rootReducer = {
-  userData: userReducer
+  userData: userReducer,
+  loadingData: loadingReducer
 }
 
 export default rootReducer;

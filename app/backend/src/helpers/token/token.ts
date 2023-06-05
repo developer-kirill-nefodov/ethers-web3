@@ -8,7 +8,6 @@ import {LIFETIME_ACCESS_TOKEN, LIFETIME_REFRESH_TOKEN} from "../../constants";
 export interface IUserData {
   id: ColumnReference
   email: string
-  nickname: string
   role: IRole
 }
 

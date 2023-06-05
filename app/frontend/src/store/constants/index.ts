@@ -1,1 +1,2 @@
 export const ACCESS_ROLE = 'ACCESS_ROLE_ACTION';
+export const LOGIN_ACTION = 'LOGIN_ACTION';

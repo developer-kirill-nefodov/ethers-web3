@@ -1,15 +1,15 @@
 import React from 'react';
 
 import LayoutHeader from "./LayoutHeader";
-import {WrapperLayout} from "./styles";
 import LayoutFooter from "./LayoutFooter";
 
+import {WrapperLayout} from "./styles";
+
 interface ILayout {
-  children: any
+  children:  React.ReactElement | null
 }
 
 const Layout = ({children}: ILayout) => {
-
   return (
     <WrapperLayout>
       <LayoutHeader/>

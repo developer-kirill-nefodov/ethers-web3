@@ -17,7 +17,7 @@ export interface IAnyRouter {
 
 export const routers = () => {
   const router = Router();
-  const routers = [AuthRouters, TranslationRouter, CountryRouter];
+  const routers = [AuthRouters, CountryRouter, TranslationRouter];
 
   routers.map(({prefix, routeData}) => {
     routeData.map(({method, path, authorization = [], middleware = [], handler = []}) => {

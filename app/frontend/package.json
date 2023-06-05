@@ -11,11 +11,13 @@
     "serve:build": "npm run build; serve -s build -p 3000"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "ethers": "^6.4.0",
+    "formik": "^2.4.1",
     "i18next": "^22.5.0",
     "i18next-http-backend": "^2.2.1",
     "react": "^18.2.0",
@@ -25,10 +27,10 @@
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
-    "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
     "styled-components": "^5.3.11",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",

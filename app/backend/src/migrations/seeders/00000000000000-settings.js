@@ -1,3 +1,5 @@
+const data = require('../data/translations.json');
+
 module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('roles', [
@@ -54,10 +56,38 @@ module.exports = {
         updated_at: new Date()
       },
     ], {});
+
+    await queryInterface.bulkInsert('translations', [
+      {
+        language: 'US',
+        data: JSON.stringify(data.US),
+        created_at: new Date(),
+        updated_at: new Date()
+      },
+      {
+        language: 'DE',
+        data: JSON.stringify(data.DE),
+        created_at: new Date(),
+        updated_at: new Date()
+      },
+      {
+        language: 'CN',
+        data: JSON.stringify(data.CN),
+        created_at: new Date(),
+        updated_at: new Date()
+      },
+      {
+        language: 'UA',
+        data: JSON.stringify(data.UA),
+        created_at: new Date(),
+        updated_at: new Date()
+      },
+    ], {});
   },
 
   async down(queryInterface) {
     await queryInterface.bulkDelete('roles', null, {});
     await queryInterface.bulkDelete('countries', null, {});
+    await queryInterface.bulkDelete('translations', null, {});
   }
 };

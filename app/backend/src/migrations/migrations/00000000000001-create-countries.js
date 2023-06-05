@@ -10,18 +10,22 @@ module.exports = {
       countries: {
         type: Sequelize.STRING(30),
         allowNull: false,
+        primaryKey: true,
       },
       iso2: {
         type: Sequelize.STRING(2),
-        allowNull: false
+        allowNull: false,
+        primaryKey: true,
       },
       iso3: {
         type: Sequelize.STRING(3),
         allowNull: false,
+        primaryKey: true,
       },
       lang: {
         type: Sequelize.STRING(30),
         allowNull: false,
+        primaryKey: true,
       },
       created_at: {
         allowNull: false,

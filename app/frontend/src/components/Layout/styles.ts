@@ -13,10 +13,6 @@ export const WrapperLayoutHeader = styled.div`
   border-bottom: 1px solid #DBDEE5;
 `;
 
-export const WrapperLogoHeader = styled.div`
-
-`;
-
 export const NavigateLink = styled(CustomLink)`
   color: ${props => props.theme.colors.navigate};
   font-size: 16px;

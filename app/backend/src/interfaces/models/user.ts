@@ -11,7 +11,6 @@ export interface IRole {
 }
 
 interface IUserModelData extends ModelAttributes {
-  nickname: string
   email: string
   role: IRole
   password: string

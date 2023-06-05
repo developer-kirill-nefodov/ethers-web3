@@ -6,7 +6,7 @@ export type INamePermissions = 'block_user' | 'delete_user' | 'assign_roles';
 
 export interface IUserData {
   id?: number
-  email?: string
+  email?: string;
 }
 
 export interface IUserState extends IUserData {
