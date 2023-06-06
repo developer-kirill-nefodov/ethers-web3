@@ -19,7 +19,6 @@ interface ILoginRes {
 
 function* loginReq({payload}: ILoginReq) {
   try {
-    console.log(payload, 'req')
     const {data}: { data: ILoginRes } = yield call(window.axios.post, ApiUrls.auth.login, payload);
 
     setAccessToken(data.token);

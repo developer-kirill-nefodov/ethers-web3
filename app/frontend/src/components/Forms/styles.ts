@@ -1,23 +1,27 @@
 import styled from "styled-components";
 import {Btn, Input} from "../../styles";
-export const CardWrapper = styled.div`
+
+export const CardShadow = styled.div`
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+`;
+
+export const CardWrapper = styled(CardShadow)`
   position: absolute;
   top: 30%;
   display: flex;
   padding: 20px 40px;
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
   form {
     width: 100%;
   }
 
-  @media(min-width: ${({theme}) => theme.breakpoints.sm}px) {
+  @media (min-width: ${({theme}) => theme.breakpoints.sm}px) {
     width: 25rem;
   }
 
-  @media(max-width: ${({theme}) => theme.breakpoints.sm}px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.sm}px) {
     width: 75%;
   }
 `;

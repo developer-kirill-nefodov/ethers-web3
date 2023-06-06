@@ -14,6 +14,18 @@ const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL
 });
 
+api.interceptors.request.use(async (config) => {
+  const token = getAccessToken();
+
+  if(token) {
+    config.headers.set('Authorization',`Bearer ${token}`);
+  }
+
+  return config;
+}, async (error) => {
+  return Promise.reject(error);
+});
+
 api.interceptors.response.use((response) => {
   return response;
 }, async (error) => {
@@ -33,16 +45,5 @@ api.interceptors.response.use((response) => {
   }
   return Promise.reject(error);
 });
-
-api.interceptors.request.use(async (config) => {
-  const token = getAccessToken();
-
-  config.headers.set('Authorization', token ? `Bearer ${token}` : '');
-
-  return config;
-}, async (error) => {
-  return Promise.reject(error);
-});
-
 
 window.axios = api;

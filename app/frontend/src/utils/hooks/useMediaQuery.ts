@@ -23,7 +23,7 @@ export const useMediaQuery = ({type, size}: IUseMediaQuery) => {
     return () => (
       window.removeEventListener('resize', onResize)
     );
-  }, []);
+  }, [type, size, breakpoints]);
 
   return media;
 }
