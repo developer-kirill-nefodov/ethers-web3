@@ -14,9 +14,7 @@ export const refreshAccessToken = async () => {
       await window.axios.post(ApiUrls.auth.refreshToken);
 
     return data;
-  } catch (e) {
-
-  }
+  } catch (e) {}
 }
 
 export const getAccessToken = () => {

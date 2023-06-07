@@ -1,25 +1,21 @@
 import React from 'react';
+import {useTranslation} from "react-i18next";
 
-import Dropdown from "../../../Dropdown";
 import RippleButton from "../../../Buttons/RippleButton";
-
-import {useStoreDispatch} from "../../../../store/hooks";
-import {logoutAction} from "../../../../store/saga/actions/auth.actions";
 
 import {Div} from "../../../../styles";
 
 const UserRole = () => {
-  const dispatch = useStoreDispatch();
-
-  const handlerClick = () => {
-    dispatch(logoutAction());
-  }
+  const {t} = useTranslation()
 
   return (
     <Div display='flex'>
-      <Dropdown title='Title'/>
-      <RippleButton onClick={handlerClick}>
-        Logout
+      <RippleButton
+        color='#fff'
+        backgroundBtn='#4A5EC4'
+        backgroundSpn='#cdcdcd'
+      >
+        {t('user.connect')}
       </RippleButton>
     </Div>
   );

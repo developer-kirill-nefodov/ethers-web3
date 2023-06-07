@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {CardShadow} from "../Forms/styles";
 
 export const WrapperDropdown = styled.div`
@@ -28,19 +28,20 @@ export const WrapperMenu = styled.div`
 
 interface IWrapperList {
   top: string;
-  opacity: number;
+  open: boolean;
 }
 
 export const WrapperList = styled(CardShadow)<IWrapperList>`
-  position: absolute;
   right: 0;
-  z-index: 10;
-  transition: 100ms;
-  top: ${({top}) => top};
-  opacity: ${({opacity}) => opacity};
-  min-width: 100%;
+  display: none;
+  position: absolute;
   background: white;
   border-radius: .5rem;
+  top: ${({top}) => top};
+  ${({open}) => open && css`
+    display: block;
+    z-index: 10;
+  `};
 `;
 
 

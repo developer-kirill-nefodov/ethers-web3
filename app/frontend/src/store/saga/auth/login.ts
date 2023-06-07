@@ -5,6 +5,7 @@ import {LOGIN_ACTION} from "../../constants";
 
 import {setAccessToken} from "../../../utils/api";
 import {accessRoleAction} from "../actions/auth.actions";
+import {toast} from "../../../components/Toastify";
 import type {IStateLogin} from "../../../utils/validations/auth/login";
 
 interface ILoginReq {
@@ -22,9 +23,10 @@ function* loginReq({payload}: ILoginReq) {
     const {data}: { data: ILoginRes } = yield call(window.axios.post, ApiUrls.auth.login, payload);
 
     setAccessToken(data.token);
+    toast('You have successfully logged into your account!', 'success');
     yield put(accessRoleAction());
-  } catch (e) {
-
+  } catch (e: any) {
+    toast(e.response.data, 'error');
   }
 }
 

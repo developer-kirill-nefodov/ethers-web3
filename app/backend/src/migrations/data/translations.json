@@ -6,7 +6,10 @@
     "auth.label.password": "Password",
     "auth.placeholder.email": "Your email please...",
     "auth.placeholder.password": "Your password please...",
-    "auth.forgotPassword": "Forgot your password?"
+    "auth.forgotPassword": "Forgot your password?",
+
+    "user.connect": "Connect",
+    "user.logout": "Logout"
   },
   "DE": {
     "auth.login": "Anmelden",
@@ -15,7 +18,10 @@
     "auth.label.password": "Passwort",
     "auth.placeholder.email": "Deine email...",
     "auth.placeholder.password": "Ihr passwort...",
-    "auth.forgotPassword": "Haben Sie Ihr Passwort vergessen?"
+    "auth.forgotPassword": "Haben Sie Ihr Passwort vergessen?",
+
+    "user.connect": "Connect",
+    "user.logout": "Logout"
   },
   "CN": {
     "auth.login": "登入",
@@ -24,7 +30,10 @@
     "auth.label.password": "密码",
     "auth.placeholder.email": "你的邮件...",
     "auth.placeholder.password": "你的密码...",
-    "auth.forgotPassword": "忘记密码了吗？"
+    "auth.forgotPassword": "忘记密码了吗？",
+
+    "user.connect": "Connect",
+    "user.logout": "Logout"
   },
   "UA": {
     "auth.login": "Увійти",
@@ -33,6 +42,9 @@
     "auth.label.password": "Пароль",
     "auth.placeholder.email": "Ваша електронна адреса...",
     "auth.placeholder.password": "Ваш пароль...",
-    "auth.forgotPassword": "Забули свій пароль?"
+    "auth.forgotPassword": "Забули свій пароль?",
+
+    "user.connect": "Connect",
+    "user.logout": "Logout"
   }
 }

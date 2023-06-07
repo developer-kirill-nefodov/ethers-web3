@@ -15,7 +15,7 @@ const Dropdown = ({title}: IDropdown) => {
 
   useEffect(() => {
     const onClick = (e: any) => {
-      if(dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         handlerClose();
       }
     }
@@ -30,7 +30,7 @@ const Dropdown = ({title}: IDropdown) => {
         {title}
       </RippleButton>
       <WrapperList
-        opacity={open ? 1 : 0}
+        open={open}
         top={dropdownRef.current ? `${dropdownRef.current.offsetHeight}px` : '0px'}
       >
         <DropdownList>

@@ -5,22 +5,33 @@ import {useRipple} from "../../utils/hooks/useRipple";
 import {ContentSpan, RippleBtn, RippleSpan} from "./styles";
 
 interface IRippleButton {
-  onClick: (e: any) => any;
-  children?: JSX.Element | string | number;
+  onClick?: (e: any) => any;
+  children?: JSX.Element | string | number | null;
   color?: string;
+  isWrapper?: boolean;
   backgroundBtn?: string;
   backgroundSpn?: string;
+  disabled?: boolean
 }
 
-const RippleButton = ({onClick, children, backgroundBtn, backgroundSpn}: IRippleButton) => {
+const RippleButton = ({
+  children,
+  color,
+  onClick,
+  disabled = false,
+  isWrapper = true,
+  backgroundBtn,
+  backgroundSpn
+}: IRippleButton) => {
   const [coords, isRippling, onHandleClick] = useRipple();
 
   return (
     <RippleBtn
+      disabled={disabled}
       backgroundColor={backgroundBtn}
       onClick={(e: any) => {
         onHandleClick(e);
-        onClick(e);
+        onClick && onClick(e);
       }}
     >
       {isRippling && (
@@ -30,9 +41,11 @@ const RippleButton = ({onClick, children, backgroundBtn, backgroundSpn}: IRipple
           backgroundColor={backgroundSpn}
         />
       )}
-      <ContentSpan>
-        {children}
-      </ContentSpan>
+      {isWrapper ? (
+        <ContentSpan color={color}>
+          {children}
+        </ContentSpan>
+      ) : children}
     </RippleBtn>
   );
 };

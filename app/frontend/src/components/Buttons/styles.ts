@@ -27,6 +27,10 @@ export const RippleBtn = styled(Btn)<IRippleBtn>`
   position: relative;
   cursor: pointer;
   background: ${({backgroundColor}) => backgroundColor || '#fff'};
+
+  &:hover {
+    opacity: .9;
+  }
 `;
 
 interface IRippleSpan extends IRippleBtn {
@@ -48,7 +52,13 @@ export const RippleSpan = styled.span<IRippleSpan>`
   background: ${({backgroundColor}) => backgroundColor || '#63a4ff'};
 `;
 
-export const ContentSpan = styled.span`
+interface IContentSpan {
+  color?: string
+}
+
+export const ContentSpan = styled.span<IContentSpan>`
   position: relative;
   z-index: 2;
+  font-weight: bold;
+  color: ${({color}) => color || '#000'}
 `;
